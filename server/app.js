@@ -84,14 +84,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
-
-process.on("SIGINT", async () => {
-  try {
-    console.log("Closing MongoDB connection");
-    await mongoose.connection.close();
-    process.exit(0);
-  } catch (err) {
-    console.error("Error closing MongoDB connection:", err);
-    process.exit(1);
-  }
-});
